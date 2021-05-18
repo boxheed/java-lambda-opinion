@@ -1,0 +1,23 @@
+//External plugins
+apply plugin: 'com.fizzpod.gitignore'
+apply plugin: 'com.fizzpod.layout'
+
+layout {
+  file('README.md') {
+    "# " + project.name
+  }
+  file('LICENSE')
+  file('shippable.yml')
+  file('release.gradle')
+}
+
+gitignore {
+  ignore 'build'
+  ignore '.gradle'
+  ignore 'bin'
+  ignore '.vagrant'
+  ignore '.classpath'
+  ignore '.project'
+  ignore '.settings'
+  ignore '.vscode'
+}

@@ -1,0 +1,16 @@
+//External plugins
+apply plugin: 'jacoco'
+
+
+jacoco {
+    toolVersion = "0.8.6"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+    }
+}
+
+build.dependsOn jacocoTestReport
