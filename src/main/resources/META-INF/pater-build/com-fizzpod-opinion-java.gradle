@@ -1,0 +1,30 @@
+//Builtin plugins
+//apply plugin: 'com.gradle.enterprise'
+apply plugin: 'java'
+apply plugin: 'project-report'
+
+//External plugins
+apply plugin: 'com.fizzpod.info'
+apply plugin: 'com.fizzpod.sweeney'
+apply plugin: 'com.github.ben-manes.versions'
+
+buildScan {
+  termsOfServiceUrl = 'https://gradle.com/terms-of-service'    
+  termsOfServiceAgree = 'yes'                                  
+}
+
+sourceCompatibility=1.8
+targetCompatibility=1.8
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+  maven {
+    url "https://plugins.gradle.org/m2/"
+  }
+}
+
+sweeney {
+	enforce 'jdk:[1.8,)'
+	enforce 'gradle:[6.0.0,)'
+}
