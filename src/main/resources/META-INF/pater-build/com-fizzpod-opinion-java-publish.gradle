@@ -9,7 +9,7 @@ apply plugin: 'pl.allegro.tech.build.axion-release'
 
 scmVersion {
     tag {
-        prefix = 'release'
+        prefix = 'release-'
     }
 }
 
