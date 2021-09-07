@@ -16,12 +16,21 @@ buildscript {
 		classpath 'com.gradle.enterprise:com.gradle.enterprise.gradle.plugin:3.6.4'
   }
 }
+
+//Repositories for this opinion to bring in other plugins as dependencies
+repositories {
+	maven {
+		url "https://plugins.gradle.org/m2/"
+	}
+}
 //apply plugin: 'com.gradle.enterprise'
 //apply plugin: 'java'
 
 apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java.gradle'
-apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java-jacoco.gradle'
 apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java-init.gradle'
+apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java-jacoco.gradle'
+//As this isn't a lambda it doesn't apply the following opinion configuration but is present for actual lambdas
+//apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java-lambda.gradle'
 apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java-publish.gradle'
 
 dependencies {
