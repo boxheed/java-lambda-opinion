@@ -14,6 +14,7 @@ buildscript {
 		classpath 'com.fizzpod:gradle-sweeney-plugin:4.4.0'
 		classpath 'com.github.ben-manes:gradle-versions-plugin:0.39.0'
 		classpath 'com.gradle.enterprise:com.gradle.enterprise.gradle.plugin:3.6.4'
+		classpath 'io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE'
   }
 }
 
@@ -42,4 +43,6 @@ dependencies {
 	runtimeOnly 'com.fizzpod:gradle-pater-build-plugin:2.3.0'
 	runtimeOnly 'com.github.ben-manes:gradle-versions-plugin:0.39.0'
 	runtimeOnly 'com.gradle.enterprise:com.gradle.enterprise.gradle.plugin:3.6.4'
+	runtimeOnly 'gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0'
+	runtimeOnly 'io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE'
 }
