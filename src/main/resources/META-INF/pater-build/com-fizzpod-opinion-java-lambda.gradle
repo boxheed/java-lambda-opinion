@@ -1,5 +1,6 @@
 
 // *******************
+/*
 buildscript {
 	repositories {
 		mavenLocal()
@@ -20,6 +21,7 @@ buildscript {
 		classpath 'gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0'
     }
 }
+*/
 apply plugin: 'com.github.johnrengelman.shadow'
 
 import com.github.jengelman.gradle.plugins.shadow.transformers.*
