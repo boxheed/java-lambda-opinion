@@ -1,6 +1,6 @@
 
 // *******************
-
+/*
 buildscript {
 	repositories {
 		mavenLocal()
@@ -10,22 +10,24 @@ buildscript {
     	}
 	}
 	dependencies {
-		classpath 'pl.allegro.tech.build:axion-release-plugin:1.13.3'
-		classpath 'com.fizzpod:gradle-extended-info-plugin:10.0.0'
-		classpath 'com.fizzpod:gradle-gitignore-plugin:2.3.0'
-		classpath 'com.fizzpod:gradle-layout-plugin:4.3.0'
-		classpath 'com.fizzpod:gradle-sweeney-plugin:4.4.0'
-		classpath 'com.github.ben-manes:gradle-versions-plugin:0.39.0'
-		classpath 'com.gradle.enterprise:com.gradle.enterprise.gradle.plugin:3.6.4'
-		classpath 'io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE'
+//		classpath 'pl.allegro.tech.build:axion-release-plugin:1.13.3'
+//		classpath 'com.fizzpod:gradle-extended-info-plugin:10.0.0'
+//		classpath 'com.fizzpod:gradle-gitignore-plugin:2.3.0'
+//		classpath 'com.fizzpod:gradle-layout-plugin:4.3.0'
+//		classpath 'com.fizzpod:gradle-sweeney-plugin:4.4.0'
+//		classpath 'com.github.ben-manes:gradle-versions-plugin:0.39.0'
+//		classpath 'com.gradle.enterprise:com.gradle.enterprise.gradle.plugin:3.6.4'
+//		classpath 'io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE'
 		classpath 'gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0'
     }
 }
-
+*/
 apply plugin: 'com.github.johnrengelman.shadow'
 
-import com.github.jengelman.gradle.plugins.shadow.transformers.*
-
+//import com.github.jengelman.gradle.plugins.shadow.transformers.*
+//def mySpringTransformer = new com.github.jengelman.gradle.plugins.shadow.transformers.PropertiesFileTransformer();
+//mySpringTransformer.paths = ['META-INF/spring.factories']
+//mySpringTransformer.mergeStrategy = "append"
 
 shadowJar {
 	classifier = 'aws'
@@ -39,8 +41,9 @@ shadowJar {
 	append 'META-INF/spring.handlers'
 	append 'META-INF/spring.schemas'
 	append 'META-INF/spring.tooling'
-	transform(PropertiesFileTransformer) {
-		paths = ['META-INF/spring.factories']
-		mergeStrategy = "append"
-	}
+    transform(project.springFactoriesShadowTransformer)
+//	transform(new com.github.jengelman.gradle.plugins.shadow.transformers.PropertiesFileTransformer()) {
+//		paths = ['META-INF/spring.factories']
+//		mergeStrategy = "append"
+//	}
 }

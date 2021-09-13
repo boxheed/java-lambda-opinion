@@ -28,6 +28,12 @@ repositories {
 //apply plugin: 'com.gradle.enterprise'
 //apply plugin: 'java'
 
+project.ext {
+	springFactoriesShadowTransformer = new com.github.jengelman.gradle.plugins.shadow.transformers.PropertiesFileTransformer();
+}
+project.springFactoriesShadowTransformer.paths = ['META-INF/spring.factories']
+project.springFactoriesShadowTransformer.mergeStrategy = "append"
+
 apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java.gradle'
 apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java-init.gradle'
 apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java-jacoco.gradle'
@@ -47,3 +53,5 @@ dependencies {
 	runtimeOnly 'gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0'
 	runtimeOnly 'io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE'
 }
+
+
