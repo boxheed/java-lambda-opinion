@@ -35,7 +35,7 @@ apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java.
 apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java-init.gradle'
 apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java-jacoco.gradle'
 //As this isn't a lambda it doesn't apply the following opinion configuration but is present for actual lambdas
-apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java-lambda.gradle'
+//apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java-lambda.gradle'
 apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java-publish.gradle'
 
 dependencies {
