@@ -24,6 +24,10 @@ buildscript {
 */
 apply plugin: 'com.github.johnrengelman.shadow'
 
+build.dependsOn shadowJar
+
+project.springFactoriesShadowTransformer.paths = ['META-INF/spring.factories']
+project.springFactoriesShadowTransformer.mergeStrategy = "append"
 //import com.github.jengelman.gradle.plugins.shadow.transformers.*
 //def mySpringTransformer = new com.github.jengelman.gradle.plugins.shadow.transformers.PropertiesFileTransformer();
 //mySpringTransformer.paths = ['META-INF/spring.factories']
@@ -31,11 +35,12 @@ apply plugin: 'com.github.johnrengelman.shadow'
 
 shadowJar {
 	classifier = 'aws'
-/*	dependencies {
+	dependencies {
 		exclude(
-			dependency("org.springframework.cloud:spring-cloud-function-web:${springCloudFunctionVersion}"))
+            dependency('org.springframework.cloud:spring-cloud-function-web:.*')
+            )
 	}
-	*/
+
 	// Required for Spring
 	mergeServiceFiles()
 	append 'META-INF/spring.handlers'
