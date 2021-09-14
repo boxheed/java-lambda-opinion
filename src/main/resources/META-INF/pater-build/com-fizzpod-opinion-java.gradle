@@ -9,6 +9,9 @@ apply plugin: 'com.fizzpod.sweeney'
 apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'io.spring.dependency-management'
 
+//hack to allow a Java class to set the transformer for the shadow plugin
+project.ext.springShadowTransformer = null
+
 buildScan {
   termsOfServiceUrl = 'https://gradle.com/terms-of-service'    
   termsOfServiceAgree = 'yes'                                  

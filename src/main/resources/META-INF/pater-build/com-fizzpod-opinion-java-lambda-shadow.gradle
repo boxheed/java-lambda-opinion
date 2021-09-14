@@ -1,0 +1,19 @@
+apply plugin: 'com.github.johnrengelman.shadow'
+
+build.dependsOn shadowJar
+
+shadowJar {
+    classifier = 'aws'
+    dependencies {
+        exclude(
+                dependency('org.springframework.cloud:spring-cloud-function-web:.*')
+                )
+    }
+
+    // Required for Spring
+    mergeServiceFiles()
+    append 'META-INF/spring.handlers'
+    append 'META-INF/spring.schemas'
+    append 'META-INF/spring.tooling'
+    transform(project.springShadowTransformer)
+}

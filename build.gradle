@@ -1,34 +1,32 @@
 buildscript {
-	repositories {
-		mavenLocal()
-		mavenCentral()
-		maven {
-    		url "https://plugins.gradle.org/m2/"
-    	}
-	}
-	dependencies {
-		classpath 'pl.allegro.tech.build:axion-release-plugin:1.13.3'
-		classpath 'com.fizzpod:gradle-extended-info-plugin:10.0.0'
-		classpath 'com.fizzpod:gradle-gitignore-plugin:2.3.0'
-		classpath 'com.fizzpod:gradle-layout-plugin:4.3.0'
-		classpath 'com.fizzpod:gradle-sweeney-plugin:4.4.0'
-		classpath 'com.github.ben-manes:gradle-versions-plugin:0.39.0'
-		classpath 'com.gradle.enterprise:com.gradle.enterprise.gradle.plugin:3.6.4'
-		classpath 'io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE'
-		classpath 'gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0'
-  	}
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath 'pl.allegro.tech.build:axion-release-plugin:1.13.3'
+        classpath 'com.fizzpod:gradle-extended-info-plugin:10.0.0'
+        classpath 'com.fizzpod:gradle-gitignore-plugin:2.3.0'
+        classpath 'com.fizzpod:gradle-layout-plugin:4.3.0'
+        classpath 'com.fizzpod:gradle-sweeney-plugin:4.4.0'
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.39.0'
+        classpath 'com.gradle.enterprise:com.gradle.enterprise.gradle.plugin:3.6.4'
+        classpath 'io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE'
+        classpath 'gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0'
+    }
 }
 
 //Repositories for this opinion to bring in other plugins as dependencies
 repositories {
-	maven {
-		url "https://plugins.gradle.org/m2/"
-	}
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
 }
 
-project.ext {
-	springFactoriesShadowTransformer = new com.github.jengelman.gradle.plugins.shadow.transformers.PropertiesFileTransformer();
-}
+apply plugin: 'java-library'
 
 
 apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java.gradle'
@@ -39,16 +37,18 @@ apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java-
 apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-java-publish.gradle'
 
 dependencies {
-	runtimeOnly 'pl.allegro.tech.build:axion-release-plugin:1.13.3'
-	runtimeOnly 'com.fizzpod:gradle-extended-info-plugin:10.0.0'
-	runtimeOnly 'com.fizzpod:gradle-gitignore-plugin:2.3.0'
-	runtimeOnly 'com.fizzpod:gradle-layout-plugin:4.3.0'
-	runtimeOnly 'com.fizzpod:gradle-sweeney-plugin:4.4.0'
-	runtimeOnly 'com.fizzpod:gradle-pater-build-plugin:2.3.0'
-	runtimeOnly 'com.github.ben-manes:gradle-versions-plugin:0.39.0'
-	runtimeOnly 'com.gradle.enterprise:com.gradle.enterprise.gradle.plugin:3.6.4'
-	runtimeOnly 'gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0'
-	runtimeOnly 'io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE'
+    implementation 'com.fizzpod:gradle-pater-build-plugin:2.4.0'
+    implementation 'gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0'
+    api gradleApi()
+
+    runtimeOnly 'pl.allegro.tech.build:axion-release-plugin:1.13.3'
+    runtimeOnly 'com.fizzpod:gradle-extended-info-plugin:10.0.0'
+    runtimeOnly 'com.fizzpod:gradle-gitignore-plugin:2.3.0'
+    runtimeOnly 'com.fizzpod:gradle-layout-plugin:4.3.0'
+    runtimeOnly 'com.fizzpod:gradle-sweeney-plugin:4.4.0'
+    runtimeOnly 'com.github.ben-manes:gradle-versions-plugin:0.39.0'
+    runtimeOnly 'com.gradle.enterprise:com.gradle.enterprise.gradle.plugin:3.6.4'
+    runtimeOnly 'io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE'
 }
 
 
